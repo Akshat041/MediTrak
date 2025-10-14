@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MediTrak — Medication Reminders</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="container">
+            <h1 class="logo">MediTrak</h1>
+            <p class="tag">Simple medication reminders</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="controls">
+            <button id="addBtn" class="btn primary">＋ Add Reminder</button>
+            <div class="toggles">
+                <label class="toggle">
+                    <input type="checkbox" id="globalSoundToggle" checked />
+                    <span>Sound</span>
+                </label>
+                <button id="clearAll" class="btn danger" title="Remove all reminders">Clear All</button>
+            </div>
+        </section>
+
+        <section id="remindersWrap" class="reminders-grid" aria-live="polite">
+            <!-- Reminder cards inserted here -->
+        </section>
+
+        <footer class="footer">
+            <p>Made with love💖 by MediTrak team.</p>
+        </footer>
+    </main>
+
+    <!-- Add / Edit Modal -->
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button id="modalClose" class="modal-close" aria-label="Close">&times;</button>
+            <h2 id="modalTitle">Add New Reminder</h2>
+
+            <form id="reminderForm" class="form">
+                <label>
+                    Medicine name
+                    <input type="text" id="medName" placeholder="e.g. Paracetamol" required />
+                </label>
+
+                <label>
+                    Dosage / Notes
+                    <input type="text" id="medDose" placeholder="e.g. 500 mg / After food" />
+                </label>
+
+                <label>
+                    Time
+                    <input type="time" id="medTime" required />
+                </label>
+
+                <label class="checkbox">
+                    <input type="checkbox" id="medSound" checked />
+                    Play sound when due
+                </label>
+
+                <div class="modal-actions">
+                    <button type="submit" class="btn primary">Save Reminder</button>
+                    <button type="button" id="modalCancel" class="btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Due prompt modal (shows when a reminder is due) -->
+    <div id="dueModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="dueTitle">
+        <div class="modal-content small">
+            <h3 id="dueTitle">Time to take your medicine</h3>
+            <p id="dueText"></p>
+            <div class="modal-actions">
+                <button id="markTaken" class="btn success">Mark Taken</button>
+                <button id="markMissed" class="btn danger">Mark Missed</button>
+                <button id="snoozeBtn" class="btn">Snooze 10 min</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

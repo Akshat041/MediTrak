@@ -13,6 +13,14 @@
     Roboto, "Helvetica Neue", Arial;
 }
 
+.patient-banner {
+  background: #e0f9ff;
+  border-left: 4px solid #06b6d4;
+  padding: 16px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
 * {
   box-sizing: border-box;
 }

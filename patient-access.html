@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediTrak | Patient Access</title>
+    <link rel="stylesheet" href="patient-access.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="wrap">
+            <h1>Patient Access</h1>
+            <p>Enter your details to view your reminder dashboard</p>
+        </div>
+    </header>
+
+    <main class="form-section">
+        <div class="wrap">
+            <form id="patientAccessForm" class="form-card">
+                <label>
+                    Patient Name:
+                    <input type="text" id="patientName" required placeholder="e.g. Ramesh Kumar" />
+                </label>
+
+                <label>
+                    Patient ID:
+                    <input type="text" id="patientId" required placeholder="e.g. PTN-1023" />
+                </label>
+
+                <a class="btn-primary" href="dashboard.html">Access Dashboard</a>
+
+                <a href="index.html" class="btn-outline back-btn">← Back to Home</a>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('patientAccessForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('patientName').value.trim();
+            const id = document.getElementById('patientId').value.trim();
+
+            if (!name || !id) {
+                alert("Please fill in both fields.");
+                return;
+            }
+
+            // Check if reminders for this ID exist in localStorage
+            const patientRemKey = `meditrak_reminders_v1_${id}`;
+            const reminders = localStorage.getItem(patientRemKey);
+
+            if (reminders) {
+                // Save current patient for dashboard display
+                localStorage.setItem('currentPatient', JSON.stringify({ name, id }));
+                localStorage.setItem('currentPatientRemKey', patientRemKey);
+
+                // Redirect to dashboard
+                window.location.href = 'dashboard.html';
+            } else {
+                alert("No record found for this Patient ID. Please check your details or contact the receptionist.");
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,15 +1,3 @@
-/* -------------------------
-   Utilities & State
-   --------------------------*/
-const LS_KEY = "meditrak_reminders_v1";
-
-let reminders = []; // loaded from localStorage
-let dueReminder = null; // currently showing due modal
-let audioCtx = null; // for beep
-
-/* -------------------------
-   DOM refs
-   --------------------------*/
 const addBtn = document.getElementById("addBtn");
 const modal = document.getElementById("modal");
 const modalClose = document.getElementById("modalClose");
@@ -31,9 +19,14 @@ const medDoseInput = document.getElementById("medDose");
 const medTimeInput = document.getElementById("medTime");
 const medSoundInput = document.getElementById("medSound");
 
-/* -------------------------
-   Persistence
-   --------------------------*/
+let LS_KEY = "meditrak_reminders_v1";
+const patientRemKey = localStorage.getItem("currentPatientRemKey");
+if (patientRemKey) {
+  LS_KEY = patientRemKey;
+}
+
+let reminders = []; // loaded from localStorage
+
 function loadReminders() {
   try {
     const raw = localStorage.getItem(LS_KEY);

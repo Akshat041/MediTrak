@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediTrak | Receptionist Panel</title>
+    <link rel="stylesheet" href="receptionist.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="wrap">
+            <div class="header-top">
+                <h1>MediTrak Receptionist Panel</h1>
+                <a href="index.html" class="btn-outline back-btn">← Back to Home</a>
+            </div>
+            <p>Enter patient details to generate medicine reminders</p>
+        </div>
+    </header>
+
+    <main class="form-section">
+        <div class="wrap">
+            <form id="patientForm" class="form-card">
+                <label>
+                    Patient Name:
+                    <input type="text" id="patientName" required placeholder="e.g. Ramesh Kumar" />
+                </label>
+
+                <label>
+                    Age:
+                    <input type="number" id="patientAge" required placeholder="e.g. 42" />
+                </label>
+
+                <label>
+                    Gender:
+                    <select id="patientGender" required>
+                        <option value="" disabled selected>Select gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </label>
+
+                <label>
+                    Patient ID (optional):
+                    <input type="text" id="patientId" placeholder="e.g. PTN-1023" />
+                </label>
+
+                <label>
+                    Doctor's Name:
+                    <input type="text" id="doctorName" required placeholder="e.g. Dr. Sharma" />
+                </label>
+
+                <label>
+                    Notes / Prescription Reference:
+                    <textarea id="notes" rows="3" placeholder="Enter any specific notes..."></textarea>
+                </label>
+
+                <button type="submit" class="btn-primary">Proceed to Set Reminders</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('patientForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const patientData = {
+                name: document.getElementById('patientName').value.trim(),
+                age: document.getElementById('patientAge').value.trim(),
+                gender: document.getElementById('patientGender').value,
+                id: document.getElementById('patientId').value.trim() || `PTN-${Date.now()}`,
+                doctor: document.getElementById('doctorName').value.trim(),
+                notes: document.getElementById('notes').value.trim()
+            };
+
+            // Save current patient info
+            localStorage.setItem('currentPatient', JSON.stringify(patientData));
+
+            // Use a per-patient reminders key
+            const patientRemKey = `meditrak_reminders_v1_${patientData.id}`;
+            localStorage.setItem('currentPatientRemKey', patientRemKey);
+
+            // Initialize empty reminders for this patient if not present
+            if (!localStorage.getItem(patientRemKey)) {
+                localStorage.setItem(patientRemKey, JSON.stringify([]));
+            }
+
+            // Redirect to dashboard
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+
+</html>

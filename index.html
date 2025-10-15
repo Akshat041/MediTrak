@@ -4,88 +4,148 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>MediTrak — Medication Reminders</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>MediTrak — Never Miss a Dose Again</title>
+    <link rel="stylesheet" href="landing.css" />
 </head>
 
 <body>
-    <header class="topbar">
-        <div class="container">
-            <h1 class="logo">MediTrak</h1>
-            <p class="tag">Simple medication reminders</p>
+    <header class="nav">
+        <div class="wrap">
+            <div class="brand">MediTrak</div>
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how">How it works</a>
+                <a href="#footer">Contact</a>
+                <!-- CTA to the dashboard. If you didn't rename your app, change to href="index.html" -->
+                <a class="btn-outline" href="dashboard.html">Get Started</a>
+            </nav>
         </div>
     </header>
 
-    <main class="container">
-        <section class="controls">
-            <button id="addBtn" class="btn primary">＋ Add Reminder</button>
-            <div class="toggles">
-                <label class="toggle">
-                    <input type="checkbox" id="globalSoundToggle" checked />
-                    <span>Sound</span>
-                </label>
-                <button id="clearAll" class="btn danger" title="Remove all reminders">Clear All</button>
-            </div>
-        </section>
-
-        <section id="remindersWrap" class="reminders-grid" aria-live="polite">
-            <!-- Reminder cards inserted here -->
-        </section>
-
-        <footer class="footer">
-            <p>Made with love💖 by MediTrak team.</p>
-        </footer>
-    </main>
-
-    <!-- Add / Edit Modal -->
-    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-        <div class="modal-content">
-            <button id="modalClose" class="modal-close" aria-label="Close">&times;</button>
-            <h2 id="modalTitle">Add New Reminder</h2>
-
-            <form id="reminderForm" class="form">
-                <label>
-                    Medicine name
-                    <input type="text" id="medName" placeholder="e.g. Paracetamol" required />
-                </label>
-
-                <label>
-                    Dosage / Notes
-                    <input type="text" id="medDose" placeholder="e.g. 500 mg / After food" />
-                </label>
-
-                <label>
-                    Time
-                    <input type="time" id="medTime" required />
-                </label>
-
-                <label class="checkbox">
-                    <input type="checkbox" id="medSound" checked />
-                    Play sound when due
-                </label>
-
-                <div class="modal-actions">
-                    <button type="submit" class="btn primary">Save Reminder</button>
-                    <button type="button" id="modalCancel" class="btn">Cancel</button>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="wrap hero-inner">
+            <div class="hero-text">
+                <h1>MediTrak</h1>
+                <p class="tagline">Never Miss a Dose Again — simple medication reminders that work offline.</p>
+                <div class="hero-cta">
+                    <a class="btn-primary" href="dashboard.html">Get Started</a>
+                    <a class="btn-ghost" href="#features">See Features</a>
                 </div>
-            </form>
-        </div>
-    </div>
 
-    <!-- Due prompt modal (shows when a reminder is due) -->
-    <div id="dueModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="dueTitle">
-        <div class="modal-content small">
-            <h3 id="dueTitle">Time to take your medicine</h3>
-            <p id="dueText"></p>
-            <div class="modal-actions">
-                <button id="markTaken" class="btn success">Mark Taken</button>
-                <button id="markMissed" class="btn danger">Mark Missed</button>
-                <button id="snoozeBtn" class="btn">Snooze 10 min</button>
+                <ul class="hero-list">
+                    <li><strong>Add</strong> medicine name, dosage & time</li>
+                    <li><strong>Alerts</strong> with optional sound</li>
+                    <li><strong>Track</strong> Taken / Missed and persist locally</li>
+                </ul>
+            </div>
+
+            <div class="hero-media">
+                <!-- Add a screenshot of your dashboard here -->
+                <!-- Place a file at /assets/hero.png and uncomment the <img> line -->
+                <!-- <img src="assets/hero.png" alt="MediTrak dashboard screenshot"> -->
+                <div class="screenshot-placeholder">
+                    <img src="./assets/image.png" alt="">
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script src="app.js"></script>
+    <!-- FEATURES -->
+    <section id="features" class="section features">
+        <div class="wrap">
+            <h2>Features</h2>
+            <p class="lead">Designed to be fast, simple, and reliable — no account required.</p>
+
+            <div class="features-grid">
+                <article class="feature">
+                    <!-- Optional icon: add /assets/feature-1.svg -->
+                    <!-- <img src="assets/feature-1.svg" alt="" class="icon"> -->
+                    <h3>Add reminders</h3>
+                    <p>Create reminders with name, dosage and time in seconds using our modal form.</p>
+                </article>
+
+                <article class="feature">
+                    <!-- <img src="assets/feature-2.svg" alt="" class="icon"> -->
+                    <h3>Alerts & Sound</h3>
+                    <p>Get pop-up alerts and optional beep sound when it's time to take medicine.</p>
+                </article>
+
+                <article class="feature">
+                    <!-- <img src="assets/feature-3.svg" alt="" class="icon"> -->
+                    <h3>Track status</h3>
+                    <p>Mark reminders as Taken or Missed. Your data is saved locally with LocalStorage.</p>
+                </article>
+
+                <article class="feature">
+                    <h3>Works offline</h3>
+                    <p>No sign-in required — the app runs completely in your browser.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section how">
+        <div class="wrap">
+            <h2>How it works</h2>
+            <div class="how-grid">
+                <div class="how-step">
+                    <div class="step-num">1</div>
+                    <h4>Add a reminder</h4>
+                    <p>Use the Add Reminder button to create a medicine entry with time and notes.</p>
+                </div>
+                <div class="how-step">
+                    <div class="step-num">2</div>
+                    <h4>Await alert</h4>
+                    <p>The app checks the time every minute and alerts you when it's due.</p>
+                </div>
+                <div class="how-step">
+                    <div class="step-num">3</div>
+                    <h4>Mark taken</h4>
+                    <p>Mark reminders as Taken or Missed. They remain in the list for tracking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta">
+        <div class="wrap cta-inner">
+            <div>
+                <h3>Ready to try MediTrak?</h3>
+                <p>Open the reminder dashboard and add your first medicine within seconds.</p>
+            </div>
+            <div>
+                <a class="btn-primary large" href="dashboard.html">Open Dashboard</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="footer">
+        <div class="wrap footer-inner">
+            <div>Built with ❤️ by [Your Team Name]</div>
+            <div class="small">Made for hackathon — HTML • CSS • JavaScript</div>
+        </div>
+    </footer>
+
+    <!-- Minimal script for smooth scroll or quick interactions -->
+    <script>
+        // Smooth internal link scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const id = a.getAttribute('href').slice(1);
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Small accessibility: focus outlines when keyboard used
+        document.body.addEventListener('keydown', function (e) {
+            if (e.key === 'Tab') document.documentElement.classList.add('user-is-tabbing');
+        });
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,255 @@
+/* landing.css - styles specifically for the landing page
+   You can merge these into your existing style.css if preferred.
+*/
+
+:root {
+  --bg: #f7fbfc;
+  --accent: #0ea5a4;
+  --accent-2: #06b6d4;
+  --muted: #566674;
+  --card: #fff;
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #f0fbff 0%, #ffffff 100%);
+  color: #072033;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+}
+
+/* container wrapper */
+.wrap {
+  width: clamp(300px, 92%, 1100px);
+  margin: 0 auto;
+}
+
+/* nav */
+.nav {
+  padding: 14px 0;
+  background: transparent;
+}
+.nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-weight: 800;
+  color: var(--accent-2);
+  font-size: 1.15rem;
+}
+.nav-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn-outline {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(2, 6, 23, 0.06);
+  background: transparent;
+  color: var(--accent-2);
+  text-decoration: none;
+  font-weight: 700;
+}
+.btn-primary {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  text-decoration: none;
+  font-weight: 800;
+  box-shadow: var(--shadow);
+}
+.btn-primary.large {
+  padding: 14px 20px;
+  font-size: 1.05rem;
+}
+
+/* hero */
+.hero {
+  padding: 48px 0;
+}
+.hero-inner {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.hero-text {
+  flex: 1;
+  min-width: 260px;
+}
+.hero h1 {
+  font-size: 2.1rem;
+  margin: 0 0 8px;
+  color: #04263a;
+}
+.tagline {
+  color: var(--muted);
+  margin: 0 0 18px;
+  font-weight: 600;
+}
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.hero-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.hero-list li {
+  padding-left: 8px;
+}
+
+/* hero media */
+.hero-media {
+  flex: 1;
+  min-width: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.screenshot-placeholder {
+  width: 320px;
+  height: 220px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff, #f3feff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(6, 182, 212, 0.18);
+  text-align: center;
+  color: var(--muted);
+  padding: 12px;
+  box-shadow: var(--shadow);
+}
+.hero-media img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+/* features */
+.section {
+  padding: 36px 0;
+}
+.features .lead {
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+.feature {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.feature h3 {
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+.icon {
+  width: 38px;
+  height: 38px;
+}
+
+/* how it works */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+.how-step {
+  background: linear-gradient(180deg, #ffffff, #f7feff);
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(2, 6, 23, 0.03);
+}
+.step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+/* cta */
+.cta {
+  background: linear-gradient(
+    90deg,
+    rgba(6, 182, 212, 0.08),
+    rgba(16, 185, 129, 0.04)
+  );
+  border-radius: 12px;
+  margin: 18px 0;
+  padding: 18px;
+}
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.cta h3 {
+  margin: 0;
+}
+
+/* footer */
+.footer {
+  padding: 18px 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* responsive tweaks */
+@media (max-width: 860px) {
+  .hero-inner {
+    flex-direction: column-reverse;
+  }
+  .nav-links {
+    display: none;
+  }
+  .hero-media .screenshot-placeholder {
+    width: 280px;
+    height: 190px;
+  }
+}
